@@ -14,7 +14,7 @@ struct RocketModel {
     var gridSize = 6
     private var rocketID = 0
     var numberofSpaces: Int {
-        return (gridSize + 2) * (gridSize + 2) - 1
+        return ((gridSize + 2) * (gridSize + 2))-1
     }
     private var unusableSpaceList = [Int]()
     var numberOfColours = 3
@@ -27,6 +27,7 @@ struct RocketModel {
         !rocketsInMotion.isEmpty
     }
     
+    var needsReset: Bool = false
     
     // Game variables
     var rocketsInMotion: [Int] = []
@@ -65,7 +66,7 @@ struct RocketModel {
     }
     
     mutating func createGrid() -> Void {
-        for _ in 0...numberofSpaces { // for the number of spaces
+        for _ in 0..<numberofSpaces { // for the number of spaces
             RocketGrid.append([RocketStruct]()) // create an empty array
         }
     }
@@ -95,8 +96,8 @@ struct RocketModel {
             for rocket in rocketsInMotion { // go through rockets that need to move
                 moveOneRocket(id: rocket) // and move them!
             }
-        } else { // if go ever gets called and no rockets are moving, it will fill any empty holes in the grid instead
-            populateGrid()
+        } else {
+            needsReset = true
         }
         
     }
@@ -104,14 +105,16 @@ struct RocketModel {
     mutating func start(id: Int) -> Void {
         rocketsDestroyedThisRound = [] //reset the score of rockets set off last round
         rocketsInMotion.append(id) // add the rocket to the list of those that need to be in motion
-        self.go() // start the round
+        //self.go() // start the round
     }
     
     mutating func scoring() -> Void {
            gameScore = gameScore+(rocketsDestroyedThisRound.count*rocketsDestroyedThisRound.count*gameScoreMultiplier)
+        print(gameScore)
        }
        
        mutating func resetGame() -> Void {
+        needsReset = false
            scoring()
            populateGrid()
        }
@@ -161,7 +164,7 @@ struct RocketModel {
     }
     
     func findARocket(id: Int) -> (RocketStruct?,Int?) { // takes an rocket id number and returns the rocket's struct and grid location
-        for cell in 0...numberofSpaces { // go through all the cells in the grid
+        for cell in 0..<numberofSpaces { // go through all the cells in the grid
             let thisCell = RocketGrid[cell] // grab out the array of rockets
             if !thisCell.isEmpty { // if the array isn't empty
             for rocket in thisCell { // go through those rockets
@@ -173,6 +176,12 @@ struct RocketModel {
         }
         return (nil, nil) // else return nil - the rocket doesn't exist in the grid
     }
+    
+//    func findAGrid(cell: Int) -> (Int?) {
+//        let thisCell = RocketGrid[cell]
+//        return thisCell[thisCell.count-1].id
+//    }
+        
     
     mutating func checkForHits() -> Void {
         for rocket in rocketsInMotion { // go through all the moving rockets

@@ -20,26 +20,37 @@ class RocketGameViewModel: ObservableObject {
     var realGridSize: Int {
         gameGridSize+2
     }
-    @Published var gameInMotion = false
+    var inProgress: Bool {
+        game.inProgress
+    }
     
-    @Published var gameGrid: [RocketView] = []
+//    @Published var graphics: Bool = true
+     
+//    @Published var gameGrid: [RocketView] = []
+    var gameGrid: [RocketView] = []
     
-    @Published var score = 0
+    var needsReset: Bool = false
     
+    var score = 0
+    
+    var turns = 10
     
     func update() {
-        gameInMotion = true
-        var graphicalGrid = [RocketView]()
-        for cell in game.RocketGrid{
-            if !cell.isEmpty {
-                let topRocket = cell[cell.count-1]
-                graphicalGrid.append(RocketView(Rocket: topRocket))
+        var tempgrid: [RocketView] = []
+        for cell in game.RocketGrid {
+            if cell.isEmpty {
+                tempgrid.append(RocketView(invisible: true))
+            } else {
+            tempgrid.append(RocketView(Rocket: cell[cell.count-1]))
         }
+            gameGrid = tempgrid
+            score = game.gameScore
+            
+            }
+        controller()
     }
-    gameGrid = graphicalGrid
-    score = game.gameScore
-    gameInMotion = false
-}
+    
+ 
 
 init(gridSize: Int, numberOfColours: Int) {
     self.numberOfColours = numberOfColours
@@ -47,26 +58,56 @@ init(gridSize: Int, numberOfColours: Int) {
     self.game = RocketModel(gridSize: self.gameGridSize, numberOfColours: self.numberOfColours)
     update()
 }
+    
+    func staus()
+        {
+        print ("Model \(game.RocketGrid)")
+        print ("Graphics \(gameGrid)")
+        print ("Game In Progress \(inProgress) Game Needs Reset \(needsReset)")
+    }
 
 
 // MARK: - Intents
 
 func start(rocketID: Int) {
+    if turns > 0 {
     game.start(id: rocketID)
-    update()
-    
+    needsReset = true
+    withAnimation(.linear){
+        controller()
+    }
+    turns = turns-1
 }
+    }
 
+    func controller() {
+        if game.inProgress {
+                go()
+        } else {
+        if needsReset {
+            reset()
+        }
+    }
+        objectWillChange.send()
+//        updateGraphics()
+        }
+    
 func go() {
     game.go()
-    print(gameGrid)
     update()
 }
+//    func updateGraphics(){
+//        graphics = !graphics
+//    }
 
 func reset() {
+    print("Reset")
+    needsReset = false
     game.resetGame()
-    print(gameGrid)
+    score = game.gameScore
     update()
+    
+    
 }
 
 } // End of GameView
