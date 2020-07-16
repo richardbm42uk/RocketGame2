@@ -19,16 +19,18 @@ struct RocketGameView: View {
     }
     
     var body: some View {
+        GeometryReader { geometry in
         ZStack {
             //            Rectangle()
             //                .fill(Color.yellow) // background
+            if geometry.size.width < geometry.size.height {
             VStack {
                 Group {
                     ZStack {
                         Image("stars")
                             .resizable()
                         ZStack {
-                            ForEach(game.rocketLayers) { rocket in
+                            ForEach(self.game.rocketLayers) { rocket in
                                 rocket
                                     .onTapGesture {
                                         if !self.game.inProgress {
@@ -43,19 +45,59 @@ struct RocketGameView: View {
                     }.aspectRatio(1.0, contentMode: .fit)
                     Group {
                         Spacer()
-                        Text("Score: \(game.score)")
-                        Text("Rockets this turn: \(game.thisTurn)")
-                        Text("Rockets total: \(game.total)")
-                        Text("Turns remaining: \(game.turns)")
-                        
+                        VStack {
+                        Text("Score: \(self.game.score)")
+                        Text("Rockets this turn: \(self.game.thisTurn)")
+                        Text("Rockets total: \(self.game.total)")
+                        Text("Turns remaining: \(self.game.turns)")
+                        }
                         Spacer()
                     }
                     .font(.largeTitle)
                     .foregroundColor(Color.black)
                     .animation(.none)
                 }
+                }
+            } else {
+                HStack {
+                    Group {
+                        ZStack {
+                            Image("stars")
+                                .resizable()
+                            ZStack {
+                                ForEach(self.game.rocketLayers) { rocket in
+                                    rocket
+                                        .onTapGesture {
+                                            if !self.game.inProgress {
+                                                self.animate = true
+                                                self.game.start(rocketID: rocket.id)
+                                            }
+                                    }
+                                }
+                            }
+                            .scaleEffect(self.scaleFactor)
+                            .clipped()
+                        }.aspectRatio(1.0, contentMode: .fit)
+                        Group {
+                            Spacer()
+                            VStack {
+                            Text("Score: \(self.game.score)")
+                            Text("Rockets this turn: \(self.game.thisTurn)")
+                            Text("Rockets total: \(self.game.total)")
+                            Text("Turns remaining: \(self.game.turns)")
+                            }
+                            Spacer()
+                        }
+                        .font(.largeTitle)
+                        .foregroundColor(Color.black)
+                        .animation(.none)
+                    }
+                    }
+                
             }
-            if game.over {
+            
+            
+            if self.game.over {
                 RoundedRectangle(cornerRadius: 10.0)
                     .padding()
                     .foregroundColor(Color.white)
@@ -67,7 +109,7 @@ struct RocketGameView: View {
         }.edgesIgnoringSafeArea(.bottom)
     }
 }
-
+}
 
 
 
@@ -87,3 +129,4 @@ struct ContentView_Previews: PreviewProvider {
         
     }
 }
+
