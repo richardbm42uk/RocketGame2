@@ -30,7 +30,7 @@ class RocketGameViewModel: ObservableObject {
     
     var needsReset: Bool = false
     var score = 0
-    var turns = 10
+    var turns = 2
     var thisTurn = 0
     var total = 0
     

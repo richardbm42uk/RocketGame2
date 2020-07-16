@@ -98,13 +98,23 @@ struct RocketGameView: View {
             
             
             if self.game.over {
+                ZStack{
                 RoundedRectangle(cornerRadius: 10.0)
-                    .padding()
                     .foregroundColor(Color.white)
                     .opacity(0.8)
                     .transition(.scale)
-                
+                    VStack {
+                        Spacer()
                 Text("Game Over")
+                    .font(.largeTitle)
+                        Spacer()
+                        Text("Score: \(self.game.score)")
+                        .font(.title)
+                        Text("Total Rockets Destroyed: \(self.game.total)")
+                        .font(.title)
+                        Spacer()
+                    }
+                }.padding()
             }
         }.edgesIgnoringSafeArea(.bottom)
     }
