@@ -30,7 +30,7 @@ class RocketGameViewModel: ObservableObject {
     
     var needsReset: Bool = false
     var score = 0
-    var turns = 2
+    var turns: Int
     var thisTurn = 0
     var total = 0
     
@@ -55,7 +55,8 @@ class RocketGameViewModel: ObservableObject {
     private let rocketSpeedConstant = 0.3
  
 
-init(gridSize: Int, numberOfColours: Int) {
+    init(gridSize: Int, numberOfTurns: Int = 10, numberOfColours: Int) {
+    self.turns = numberOfTurns
     self.numberOfColours = numberOfColours
     self.gameGridSize = gridSize
     self.game = RocketModel(gridSize: self.gameGridSize, numberOfColours: self.numberOfColours)
@@ -163,3 +164,9 @@ var body: some View {
     }
 }
 
+
+struct RocketGameViewModel_Previews: PreviewProvider {
+    static var previews: some View {
+        RocketGameView(game: RocketGameViewModel(gridSize: 7, numberOfColours: 6))
+    }
+}

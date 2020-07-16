@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // This is what is fucking everything up
-        let game = RocketGameViewModel(gridSize: 6, numberOfColours: 4)
+        let game = RocketGameViewModel(gridSize: 8, numberOfColours: 5)
         
         // Create the SwiftUI view that provides the window contents.
  //       let game = RocketGameViewModel(gridSize: 6, numberOfColours: 4)

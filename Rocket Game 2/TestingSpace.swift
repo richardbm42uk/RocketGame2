@@ -10,30 +10,34 @@ import SwiftUI
 
 
 
-struct TestingSpace: View {
+struct GameOver: View {
     var body: some View {
-                        ZStack{
+            ZStack{
         RoundedRectangle(cornerRadius: 10.0)
-            .foregroundColor(Color.white)
-            .opacity(0.8)
+            .foregroundColor(.white)
+            .opacity(0.9)
             .transition(.scale)
             VStack {
+                RocketView(id: 0, colourNumber: 0, direction: 0)
+                    .transition(.move(edge: .bottom))
+                VStack {
                 Spacer()
         Text("Game Over")
             .font(.largeTitle)
                 Spacer()
                 Text("Score: 100")
                 .font(.title)
-                Text("Total Rockets Destroyed: 5")
+                Text("Total Destroyed: 5")
                 .font(.title)
                 Spacer()
-            }
+                }
+                            }.padding()
         }.padding()
     }
 }
 
 struct TestingSpace_Previews: PreviewProvider {
     static var previews: some View {
-        TestingSpace()
+        GameOver()
     }
 }
