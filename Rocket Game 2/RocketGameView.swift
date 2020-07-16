@@ -12,7 +12,7 @@ struct RocketGameView: View {
     
     
     @ObservedObject var game: RocketGameViewModel
-    @State private var animate = false
+//    @State private var animate = false
     
     var scaleFactor: CGFloat {
         1.0 + (2.0 / CGFloat(game.realGridSize-1))
@@ -21,8 +21,8 @@ struct RocketGameView: View {
     var body: some View {
         GeometryReader { geometry in
         ZStack {
-            //            Rectangle()
-            //                .fill(Color.yellow) // background
+                        Rectangle()
+                            .fill(Color.black) // background
             if geometry.size.width < geometry.size.height {
             VStack {
                 Group {
@@ -34,7 +34,7 @@ struct RocketGameView: View {
                                 rocket
                                     .onTapGesture {
                                         if !self.game.inProgress {
-                                            self.animate = true
+//                                            self.animate = true
                                             self.game.start(rocketID: rocket.id)
                                         }
                                 }
@@ -50,11 +50,11 @@ struct RocketGameView: View {
                         Text("Rockets this turn: \(self.game.thisTurn)")
                         Text("Rockets total: \(self.game.total)")
                         Text("Turns remaining: \(self.game.turns)")
-                        }
+                        }.foregroundColor(Color.white)
                         Spacer()
                     }
                     .font(.largeTitle)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color.white)
                     .animation(.none)
                 }
                 }
@@ -69,7 +69,7 @@ struct RocketGameView: View {
                                     rocket
                                         .onTapGesture {
                                             if !self.game.inProgress {
-                                                self.animate = true
+//                                                self.animate = true
                                                 self.game.start(rocketID: rocket.id)
                                             }
                                     }
@@ -85,11 +85,11 @@ struct RocketGameView: View {
                             Text("Rockets this turn: \(self.game.thisTurn)")
                             Text("Rockets total: \(self.game.total)")
                             Text("Turns remaining: \(self.game.turns)")
-                            }
+                            }.foregroundColor(Color.white)
                             Spacer()
                         }
                         .font(.largeTitle)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color.white)
                         .animation(.none)
                     }
                     }
