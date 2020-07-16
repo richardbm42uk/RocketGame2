@@ -87,3 +87,17 @@ struct RocketView: View, Identifiable, CustomStringConvertible {
     var rocketShadowSize: CGFloat = 5
     
 }
+
+struct RocketStackView: View {
+    init(rocketStack: [RocketView]) {
+        self.rocketStack = rocketStack
+    }
+    var rocketStack: [RocketView]
+    var body: some View {
+    ZStack {
+        ForEach(rocketStack){ rocket in
+            rocket
+        }
+        }
+    }
+}

@@ -177,10 +177,10 @@ struct RocketModel {
         return (nil, nil) // else return nil - the rocket doesn't exist in the grid
     }
     
-//    func findAGrid(cell: Int) -> (Int?) {
-//        let thisCell = RocketGrid[cell]
-//        return thisCell[thisCell.count-1].id
-//    }
+    func findAGrid(cell: Int) -> (Int?) {
+        let thisCell = RocketGrid[cell]
+        return thisCell[thisCell.count-1].id
+    }
         
     
     mutating func checkForHits() -> Void {
@@ -219,6 +219,7 @@ struct RocketStruct: Identifiable, Equatable, Hashable, CustomStringConvertible 
     var colourNumber: Int
     var direction: Int
     var id: Int
+    var isVisible: Bool = true
     init(id: Int, colourNumber: Int, direction: Int) {
         self.id = id
         self.colourNumber = colourNumber

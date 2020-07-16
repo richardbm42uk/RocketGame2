@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct RocketGameView: View {
+
     
     @ObservedObject var game: RocketGameViewModel
+    @State private var animate = false
     
     var body: some View {
         ZStack {
@@ -27,9 +29,12 @@ struct RocketGameView: View {
                                 rocket
                                     .onTapGesture {
                                         if !self.game.inProgress {
+                                            self.animate = true
                                             self.game.start(rocketID: rocket.id)
                                             
                                         }
+                                        
+                                        
                                 }
                             }
                             

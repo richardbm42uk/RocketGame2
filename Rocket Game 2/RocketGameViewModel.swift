@@ -12,6 +12,8 @@ class RocketGameViewModel: ObservableObject {
     
     var landscape = false // annoyingly needed but not wanted.
     
+//    @State private var isAnimating = true
+    
     // Important game variables
     
     private var game: RocketModel
@@ -23,11 +25,12 @@ class RocketGameViewModel: ObservableObject {
     var inProgress: Bool {
         game.inProgress
     }
+    var animationCount = 0.0
     
 //    @Published var graphics: Bool = true
      
-//    @Published var gameGrid: [RocketView] = []
-    var gameGrid: [RocketView] = []
+    @Published var gameGrid: [RocketView] = []
+//    var gameGrid: [RocketView] = []
     
     var needsReset: Bool = false
     
@@ -50,6 +53,7 @@ class RocketGameViewModel: ObservableObject {
         controller()
     }
     
+    private let rocketSpeedConstant = 0.3
  
 
 init(gridSize: Int, numberOfColours: Int) {
@@ -73,27 +77,38 @@ func start(rocketID: Int) {
     if turns > 0 {
     game.start(id: rocketID)
     needsReset = true
-    withAnimation(.linear){
-        controller()
-    }
+    controller()
     turns = turns-1
 }
     }
 
     func controller() {
+        print(animationCount)
         if game.inProgress {
-                go()
+            DispatchQueue.main.asyncAfter(deadline: .now() + rocketSpeedConstant) {
+                withAnimation(.linear(duration: self.rocketSpeedConstant)){
+                self.go()
+//                isAnimating.toggle()
+            }
+            }
         } else {
         if needsReset {
-            reset()
+            DispatchQueue.main.asyncAfter(deadline: .now() + rocketSpeedConstant) {
+                withAnimation(Animation.easeInOut(duration: 1.0)){
+                self.reset()
+//                self.isAnimating.toggle()
+            }
+            }
         }
     }
-        objectWillChange.send()
+        
+//        objectWillChange.send()
 //        updateGraphics()
         }
     
 func go() {
     game.go()
+    animationCount = animationCount + 0.5
     update()
 }
 //    func updateGraphics(){
@@ -106,9 +121,9 @@ func reset() {
     game.resetGame()
     score = game.gameScore
     update()
-    
-    
+    animationCount = 0
 }
+    
 
 } // End of GameView
 
