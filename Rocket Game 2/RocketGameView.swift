@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct RocketGameView: View {
-
+    
     
     @ObservedObject var game: RocketGameViewModel
     @State private var animate = false
     
     var scaleFactor: CGFloat {
-       1.0 + (2.0 / CGFloat(game.realGridSize-1))
+        1.0 + (2.0 / CGFloat(game.realGridSize-1))
     }
     
     var body: some View {
@@ -27,49 +27,42 @@ struct RocketGameView: View {
                     ZStack {
                         Image("stars")
                             .resizable()
-                        
-                        HStack {
-                            Grid(game.gameGrid) { rocket in
+                        ZStack {
+                            ForEach(game.rocketLayers) { rocket in
                                 rocket
                                     .onTapGesture {
                                         if !self.game.inProgress {
                                             self.animate = true
                                             self.game.start(rocketID: rocket.id)
-                                            
                                         }
-                                        
-                                        
                                 }
                             }
-                            
-                        }
-                        .scaleEffect(self.scaleFactor)
-                        .clipped()
-                    }.aspectRatio(1.0, contentMode: .fit)
-                    Spacer()
-                    Text("Score: \(game.score)")
-                        .font(.largeTitle)
-                        .foregroundColor(Color.black)
-                    
-                    Text("Turns remaining: \(game.turns)")
-                        .font(.largeTitle)
-                        .foregroundColor(Color.black)
-                    Spacer()
                 }
-                
-            }
-            if game.turns < 1 {
-                RoundedRectangle(cornerRadius: 10.0)
-                    .padding()
-                    .foregroundColor(Color.white)
-                    .opacity(0.8)
-                    .animation(.easeIn(duration: 0.1))
-                    .transition(.scale)
-                    
-                Text("Game Over")
-            }
-        }.edgesIgnoringSafeArea(.bottom)
+                .scaleEffect(self.scaleFactor)
+                .clipped()
+            }.aspectRatio(1.0, contentMode: .fit)
+            Spacer()
+            Text("Score: \(game.score)")
+                .font(.largeTitle)
+                .foregroundColor(Color.black)
+            
+            Text("Turns remaining: \(game.turns)")
+                .font(.largeTitle)
+                .foregroundColor(Color.black)
+            Spacer()
+        }
     }
+    if game.over {
+    RoundedRectangle(cornerRadius: 10.0)
+    .padding()
+    .foregroundColor(Color.white)
+    .opacity(0.8)
+    .transition(.scale)
+    
+    Text("Game Over")
+    }
+}.edgesIgnoringSafeArea(.bottom)
+}
 }
 
 

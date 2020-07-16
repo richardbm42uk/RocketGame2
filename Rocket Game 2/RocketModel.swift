@@ -26,6 +26,7 @@ struct RocketModel {
     var inProgress: Bool {
         !rocketsInMotion.isEmpty
     }
+
     
     var needsReset: Bool = false
     
