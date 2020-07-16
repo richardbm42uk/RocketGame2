@@ -20,9 +20,7 @@
 		38D73EF224BB14D600029FE0 /* RocketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D73EF124BB14D600029FE0 /* RocketModel.swift */; };
 		38DB430524BDB87D0064F2AF /* RocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB430424BDB87D0064F2AF /* RocketView.swift */; };
 		38DB430724BDB9030064F2AF /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB430624BDB9030064F2AF /* Array+Identifiable.swift */; };
-		38DB430924BDB91F0064F2AF /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB430824BDB91F0064F2AF /* Grid.swift */; };
 		38DB430F24C05BE10064F2AF /* rocketLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB430E24C05BE10064F2AF /* rocketLayer.swift */; };
-		38E4494B24BD9F7500D9FC3E /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E4494A24BD9F7500D9FC3E /* GridLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,9 +61,7 @@
 		38D73EF124BB14D600029FE0 /* RocketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketModel.swift; sourceTree = "<group>"; };
 		38DB430424BDB87D0064F2AF /* RocketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketView.swift; sourceTree = "<group>"; };
 		38DB430624BDB9030064F2AF /* Array+Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Identifiable.swift"; path = "../../../Documents/GitHub/cs193p-2020-swiftui/projects/Memorize/Memorize/Array+Identifiable.swift"; sourceTree = "<group>"; };
-		38DB430824BDB91F0064F2AF /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = "../../../Documents/GitHub/cs193p-2020-swiftui/projects/Memorize/Memorize/Grid.swift"; sourceTree = "<group>"; };
 		38DB430E24C05BE10064F2AF /* rocketLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rocketLayer.swift; sourceTree = "<group>"; };
-		38E4494A24BD9F7500D9FC3E /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +122,6 @@
 				38DB430E24C05BE10064F2AF /* rocketLayer.swift */,
 				38D73EEE24BA39F200029FE0 /* Extensions.swift */,
 				38DB430624BDB9030064F2AF /* Array+Identifiable.swift */,
-				38DB430824BDB91F0064F2AF /* Grid.swift */,
-				38E4494A24BD9F7500D9FC3E /* GridLayout.swift */,
 				38D73EC224BA24BE00029FE0 /* Assets.xcassets */,
 				38D73EC724BA24BE00029FE0 /* LaunchScreen.storyboard */,
 				38D73ECA24BA24BE00029FE0 /* Info.plist */,
@@ -296,12 +290,10 @@
 				38D73EEF24BA39F200029FE0 /* Extensions.swift in Sources */,
 				38D73EBD24BA24B300029FE0 /* AppDelegate.swift in Sources */,
 				38D73EBF24BA24B300029FE0 /* SceneDelegate.swift in Sources */,
-				38DB430924BDB91F0064F2AF /* Grid.swift in Sources */,
 				38DB430524BDB87D0064F2AF /* RocketView.swift in Sources */,
 				38D73EF224BB14D600029FE0 /* RocketModel.swift in Sources */,
 				38DB430724BDB9030064F2AF /* Array+Identifiable.swift in Sources */,
 				38D73EED24BA396E00029FE0 /* RocketGameViewModel.swift in Sources */,
-				38E4494B24BD9F7500D9FC3E /* GridLayout.swift in Sources */,
 				38DB430F24C05BE10064F2AF /* rocketLayer.swift in Sources */,
 				38D73EC124BA24B300029FE0 /* RocketGameView.swift in Sources */,
 			);
