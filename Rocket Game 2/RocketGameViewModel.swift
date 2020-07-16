@@ -31,6 +31,8 @@ class RocketGameViewModel: ObservableObject {
     var needsReset: Bool = false
     var score = 0
     var turns = 10
+    var thisTurn = 0
+    var total = 0
     
         func update() {
             var tempgrid: [rocketLayer] = []
@@ -45,6 +47,7 @@ class RocketGameViewModel: ObservableObject {
             }
             }
             rocketLayers = tempgrid
+            
             controller()
 //            staus()
         }
@@ -113,6 +116,8 @@ func reset() {
     needsReset = false
     game.resetGame()
     score = game.gameScore
+    thisTurn = game.rocketsDestroyedThisRound.count
+    total = game.allRocketsDestroyedThisGame.count
     update()
 //    animationCount = 0
 }

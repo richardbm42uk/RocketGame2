@@ -20,8 +20,8 @@ struct RocketGameView: View {
     
     var body: some View {
         ZStack {
-            Rectangle()
-                .fill(Color.yellow) // background
+            //            Rectangle()
+            //                .fill(Color.yellow) // background
             VStack {
                 Group {
                     ZStack {
@@ -37,32 +37,35 @@ struct RocketGameView: View {
                                         }
                                 }
                             }
+                        }
+                        .scaleEffect(self.scaleFactor)
+                        .clipped()
+                    }.aspectRatio(1.0, contentMode: .fit)
+                    Group {
+                        Spacer()
+                        Text("Score: \(game.score)")
+                        Text("Rockets this turn: \(game.thisTurn)")
+                        Text("Rockets total: \(game.total)")
+                        Text("Turns remaining: \(game.turns)")
+                        
+                        Spacer()
+                    }
+                    .font(.largeTitle)
+                    .foregroundColor(Color.black)
+                    .animation(.none)
                 }
-                .scaleEffect(self.scaleFactor)
-                .clipped()
-            }.aspectRatio(1.0, contentMode: .fit)
-            Spacer()
-            Text("Score: \(game.score)")
-                .font(.largeTitle)
-                .foregroundColor(Color.black)
-            
-            Text("Turns remaining: \(game.turns)")
-                .font(.largeTitle)
-                .foregroundColor(Color.black)
-            Spacer()
-        }
+            }
+            if game.over {
+                RoundedRectangle(cornerRadius: 10.0)
+                    .padding()
+                    .foregroundColor(Color.white)
+                    .opacity(0.8)
+                    .transition(.scale)
+                
+                Text("Game Over")
+            }
+        }.edgesIgnoringSafeArea(.bottom)
     }
-    if game.over {
-    RoundedRectangle(cornerRadius: 10.0)
-    .padding()
-    .foregroundColor(Color.white)
-    .opacity(0.8)
-    .transition(.scale)
-    
-    Text("Game Over")
-    }
-}.edgesIgnoringSafeArea(.bottom)
-}
 }
 
 
