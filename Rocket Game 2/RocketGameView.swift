@@ -14,6 +14,10 @@ struct RocketGameView: View {
     @ObservedObject var game: RocketGameViewModel
     @State private var animate = false
     
+    var scaleFactor: CGFloat {
+       1.0 + (2.0 / CGFloat(game.realGridSize-1))
+    }
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -39,7 +43,7 @@ struct RocketGameView: View {
                             }
                             
                         }
-                        .scaleEffect(1.3)
+                        .scaleEffect(self.scaleFactor)
                         .clipped()
                     }.aspectRatio(1.0, contentMode: .fit)
                     Spacer()

@@ -12,7 +12,6 @@ class RocketGameViewModel: ObservableObject {
     
     var landscape = false // annoyingly needed but not wanted.
     
-//    @State private var isAnimating = true
     
     // Important game variables
     
@@ -25,7 +24,7 @@ class RocketGameViewModel: ObservableObject {
     var inProgress: Bool {
         game.inProgress
     }
-    var animationCount = 0.0
+//    var animationCount = 0.0
     
 //    @Published var graphics: Bool = true
      
@@ -38,20 +37,35 @@ class RocketGameViewModel: ObservableObject {
     
     var turns = 10
     
-    func update() {
-        var tempgrid: [RocketView] = []
-        for cell in game.RocketGrid {
-            if cell.isEmpty {
-                tempgrid.append(RocketView(invisible: true))
-            } else {
-            tempgrid.append(RocketView(Rocket: cell[cell.count-1]))
-        }
-            gameGrid = tempgrid
-            score = game.gameScore
-            
+//    func update() {
+//        var tempgrid: [RocketView] = []
+//        for cell in game.RocketGrid {
+//            if cell.isEmpty {
+//                tempgrid.append(RocketView(invisible: true))
+//            } else {
+//            tempgrid.append(RocketView(Rocket: cell[cell.count-1]))
+//        }
+//            gameGrid = tempgrid
+//            score = game.gameScore
+//
+//            }
+//        controller()
+//    }
+    
+        func update() {
+            var tempgrid: [RocketView] = []
+            for cell in game.RocketGrid {
+                if cell.isEmpty {
+                    tempgrid.append(RocketView(invisible: true))
+                } else {
+                tempgrid.append(RocketView(Rocket: cell[cell.count-1]))
             }
-        controller()
-    }
+                gameGrid = tempgrid
+                score = game.gameScore
+    
+                }
+            controller()
+        }
     
     private let rocketSpeedConstant = 0.3
  
@@ -83,12 +97,11 @@ func start(rocketID: Int) {
     }
 
     func controller() {
-        print(animationCount)
+//        print(animationCount)
         if game.inProgress {
             DispatchQueue.main.asyncAfter(deadline: .now() + rocketSpeedConstant) {
                 withAnimation(.linear(duration: self.rocketSpeedConstant)){
                 self.go()
-//                isAnimating.toggle()
             }
             }
         } else {
@@ -96,24 +109,18 @@ func start(rocketID: Int) {
             DispatchQueue.main.asyncAfter(deadline: .now() + rocketSpeedConstant) {
                 withAnimation(Animation.easeInOut(duration: 1.0)){
                 self.reset()
-//                self.isAnimating.toggle()
             }
             }
         }
     }
         
-//        objectWillChange.send()
-//        updateGraphics()
         }
     
 func go() {
     game.go()
-    animationCount = animationCount + 0.5
+//    animationCount = animationCount + 0.5
     update()
 }
-//    func updateGraphics(){
-//        graphics = !graphics
-//    }
 
 func reset() {
     print("Reset")
@@ -121,7 +128,7 @@ func reset() {
     game.resetGame()
     score = game.gameScore
     update()
-    animationCount = 0
+//    animationCount = 0
 }
     
 
