@@ -15,8 +15,6 @@ struct Testing_Space: View {
     var body: some View {
         NavigationView() {
             ZStack {
-                //            Rectangle()
-                //                .foregroundColor(.black)
                 NavigationLink(destination: RocketGameView(game: RocketGameViewModel(gridSize: 6, numberOfColours: 4))){
                     Text("Start").font(.largeTitle)
                 }
@@ -38,34 +36,44 @@ struct Testing_Space: View {
 
 struct Testing_Space_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        Testing_Space()
     }
 }
 
 struct SettingsView: View {
+        var names = ["Ocean", "Classic", "Classic G3", "Inferno"]
+    
     var body: some View {
         List {
+            
             Section(header: Text("Game Settings")) {
                 Text("Test")
             }
             Section(header: Text("Theme")) {
-                ThemeChooser(name: "Classic")
-                ThemeChooser(name: "Classic")
-                ThemeChooser(name: "Classic")
-                ThemeChooser(name: "Classic")
-                ThemeChooser(name: "Classic")
+                ForEach((self.names.sorted()), id: \.self) { name in
+                    ThemeChooser(name: name)
+                    }
             
         }
     }.navigationBarTitle("Settings", displayMode: .inline)
 }
 }
 
+
+
+
 struct ThemeChooser: View {
+    
+    var currentPalleteName = "Classic"
     var name: String
     init(name: String) {
         self.name = name
     }
+    var isSelected: Bool {
+        self.name == currentPalleteName
+    }
     var body: some View {
+        HStack {
         VStack {
             HStack {
                 Text(name).font(.caption)
@@ -83,5 +91,13 @@ struct ThemeChooser: View {
         
     }
 }
+            Group {
+            if isSelected {
+                Image(systemName: "checkmark.square.fill")
+            } else {
+                Image(systemName: "square")
+            }
+            }.padding(.leading)
 }
+    }
 }
