@@ -36,25 +36,47 @@ struct Testing_Space: View {
 
 struct Testing_Space_Previews: PreviewProvider {
     static var previews: some View {
-        Testing_Space()
+        SettingsView()
     }
 }
 
 struct SettingsView: View {
-        var names = ["Ocean", "Classic", "Classic G3", "Inferno"]
+        var names = ["Ocean", "Classic"
+                  ,"Classic G3", "Inferno", "Candy", "Bright", "UISystemColor", "Camo", "Forest"
+    ]
+        @State var value = 0
     
     var body: some View {
         List {
             
             Section(header: Text("Game Settings")) {
-                Text("Test")
+                numberOfPicker(what: "Rows", minmax: (3,12))
+                numberOfPicker(what: "Colours", minmax: (2,8))
             }
-            Section(header: Text("Theme")) {
+            Section(header: Text("Colour Theme")) {
                 ForEach((self.names.sorted()), id: \.self) { name in
                     ThemeChooser(name: name)
                     }
+            }
+                Section(header: Text("Reset")) {
+                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                                    HStack{
+                        Text("Reset Saved Games")
+                        Spacer()
+                        Image(systemName: "exclamationmark.triangle")
+                    }
+                    }
+                    .foregroundColor(.red)
+                    }
+            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                HStack{
+                    Text("Reset Saved Games")
+                    Spacer()
+                    Image(systemName: "exclamationmark.octagon")
+                }
+                .foregroundColor(.red)
+            }
             
-        }
     }.navigationBarTitle("Settings", displayMode: .inline)
 }
 }
@@ -80,13 +102,10 @@ struct ThemeChooser: View {
                 Spacer()
             }
         HStack {
-            RocketView(id: 0, colourNumber: 0, direction: 1)
-            RocketView(id: 1, colourNumber: 1, direction: 1)
-            RocketView(id: 2, colourNumber: 2, direction: 1)
-            RocketView(id: 3, colourNumber: 3, direction: 1)
-            RocketView(id: 4, colourNumber: 4, direction: 1)
-            RocketView(id: 5, colourNumber: 5, direction: 1)
-            RocketView(id: 6, colourNumber: 6, direction: 1)
+            ForEach(0 ..< 7) { number in
+            RocketView(id: number, colourNumber: number, direction: 1)
+                .aspectRatio(1.0, contentMode: .fit)
+            }
             Spacer()
         
     }
@@ -99,5 +118,31 @@ struct ThemeChooser: View {
             }
             }.padding(.leading)
 }
+    }
+}
+
+struct numberOfPicker: View {
+    
+    var what: String
+    var minmax: (Int, Int)
+    @State var value = 0
+    
+    init(what: String, minmax: (Int, Int)) {
+        self.what = what
+        self.minmax = minmax
+        self.value = minmax.0
+    }
+    
+    var body: some View {
+        HStack {
+            Stepper(value: $value, in: minmax.0...minmax.1) {
+                Text("Number of \(what)")
+            }
+//            Spacer()
+            Text("\(value)")
+                .foregroundColor(.accentColor)
+                .bold()
+        }
+        
     }
 }

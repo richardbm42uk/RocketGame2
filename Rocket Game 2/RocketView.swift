@@ -51,7 +51,7 @@ struct RocketView: View, Identifiable, CustomStringConvertible {
         self.direction = Rocket.direction
     }
     
-    private var colourpallette = [UIColor.red, UIColor.blue, UIColor.yellow, UIColor.green, UIColor.purple, UIColor.brown, UIColor.gray]
+    private var colourpallette = [UIColor.systemRed, UIColor.systemBlue, UIColor.systemYellow, UIColor.systemGreen, UIColor.systemPink, UIColor.systemTeal, UIColor.systemOrange, UIColor.systemGray]
     private let directions = ["⬆️","↗️","➡️","↘️","⬇️","↙️","⬅️","↖️"]
     private let colourList = ["🔴","🔵","🟡","🟢","🟠","🟣","🟤","⚫️"]
     internal var description: String {
@@ -62,6 +62,7 @@ struct RocketView: View, Identifiable, CustomStringConvertible {
     }
     
     var body: some View {
+        GeometryReader { geo in
         ZStack {
             Group {
                 Image("rocketshape")
@@ -74,16 +75,29 @@ struct RocketView: View, Identifiable, CustomStringConvertible {
                     .aspectRatio(contentMode: .fit)
                     .clipped()
             }
-            .rotationEffect(angleOfDirection)
-            .scaleEffect(rocketImageScaleFactor)
-            .shadow(color: Color(UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)), radius: rocketShadowSize, x: rocketShadowSize, y: rocketShadowSize)
+            .rotationEffect(self.angleOfDirection)
+//            .scaleEffect(self.rocketImageScaleFactor)
+                .shadow(color: self.rocketShadowColour, radius: self.rocketShadowSize*geo.size.width, x: self.rocketShadowSize*geo.size.width, y: self.rocketShadowSize*geo.size.width)
         }
-        .foregroundColor(Color(rocketColour))
-        .opacity(opacity)
+        .foregroundColor(Color(self.rocketColour))
+        .opacity(self.opacity)
+    }
     }
     
+//    var rocketImageScaleFactor: CGFloat = 0.7
+    var rocketShadowSize: CGFloat = (2 / 100)
+    var rocketShadowColour: Color = Color((UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.4)))
     
-    var rocketImageScaleFactor: CGFloat = 0.7
-    var rocketShadowSize: CGFloat = 5
-    
+}
+
+struct RocketView_Previews: PreviewProvider {
+    static var previews: some View {
+        RocketView(id: 0, colourNumber: 7, direction: 1)
+    }
+}
+
+struct RocketGameView_Previews_2: PreviewProvider {
+    static var previews: some View {
+        RocketGameView(game: RocketGameViewModel(gridSize: 7, numberOfColours: 8))
+    }
 }
