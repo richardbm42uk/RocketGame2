@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3870B47524C0B7F40085B551 /* Testing Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870B47424C0B7F40085B551 /* Testing Space.swift */; };
 		38D73EBD24BA24B300029FE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D73EBC24BA24B300029FE0 /* AppDelegate.swift */; };
 		38D73EBF24BA24B300029FE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D73EBE24BA24B300029FE0 /* SceneDelegate.swift */; };
 		38D73EC124BA24B300029FE0 /* RocketGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D73EC024BA24B300029FE0 /* RocketGameView.swift */; };
@@ -21,7 +22,7 @@
 		38DB430524BDB87D0064F2AF /* RocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB430424BDB87D0064F2AF /* RocketView.swift */; };
 		38DB430F24C05BE10064F2AF /* rocketLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB430E24C05BE10064F2AF /* rocketLayer.swift */; };
 		38DB431124C083780064F2AF /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB431024C083780064F2AF /* Array+Identifiable.swift */; };
-		38DB431324C08EA00064F2AF /* TestingSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB431224C08EA00064F2AF /* TestingSpace.swift */; };
+		38DB431324C08EA00064F2AF /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB431224C08EA00064F2AF /* GameOver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3870B47424C0B7F40085B551 /* Testing Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Testing Space.swift"; sourceTree = "<group>"; };
 		38D73EB924BA24B300029FE0 /* Rocket Game 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rocket Game 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38D73EBC24BA24B300029FE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38D73EBE24BA24B300029FE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +65,7 @@
 		38DB430424BDB87D0064F2AF /* RocketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketView.swift; sourceTree = "<group>"; };
 		38DB430E24C05BE10064F2AF /* rocketLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rocketLayer.swift; sourceTree = "<group>"; };
 		38DB431024C083780064F2AF /* Array+Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
-		38DB431224C08EA00064F2AF /* TestingSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingSpace.swift; sourceTree = "<group>"; };
+		38DB431224C08EA00064F2AF /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +123,8 @@
 				38D73EC024BA24B300029FE0 /* RocketGameView.swift */,
 				38D73EEC24BA396E00029FE0 /* RocketGameViewModel.swift */,
 				38DB430424BDB87D0064F2AF /* RocketView.swift */,
-				38DB431224C08EA00064F2AF /* TestingSpace.swift */,
+				38DB431224C08EA00064F2AF /* GameOver.swift */,
+				3870B47424C0B7F40085B551 /* Testing Space.swift */,
 				38DB430E24C05BE10064F2AF /* rocketLayer.swift */,
 				38DB431024C083780064F2AF /* Array+Identifiable.swift */,
 				38D73EEE24BA39F200029FE0 /* Extensions.swift */,
@@ -296,10 +299,11 @@
 				38DB430524BDB87D0064F2AF /* RocketView.swift in Sources */,
 				38D73EF224BB14D600029FE0 /* RocketModel.swift in Sources */,
 				38DB431124C083780064F2AF /* Array+Identifiable.swift in Sources */,
+				3870B47524C0B7F40085B551 /* Testing Space.swift in Sources */,
 				38D73EED24BA396E00029FE0 /* RocketGameViewModel.swift in Sources */,
 				38DB430F24C05BE10064F2AF /* rocketLayer.swift in Sources */,
 				38D73EC124BA24B300029FE0 /* RocketGameView.swift in Sources */,
-				38DB431324C08EA00064F2AF /* TestingSpace.swift in Sources */,
+				38DB431324C08EA00064F2AF /* GameOver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,7 +481,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.richardbrownmartin.Rocket-Game-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -500,7 +504,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.richardbrownmartin.Rocket-Game-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -1,5 +1,5 @@
 //
-//  TestingSpace.swift
+//  GaveOver.swift
 //  Rocket Game 2
 //
 //  Created by Richard Brown-Martin on 16/07/2020.
@@ -7,8 +7,6 @@
 //
 
 import SwiftUI
-
-
 
 struct GameOver: View {
 //    var repeatingAnimation: Animation {
