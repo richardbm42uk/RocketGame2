@@ -28,6 +28,7 @@ class RocketGameViewModel: ObservableObject {
     
     @Published var rocketLayers: [rocketLayer] = []
     
+    var startturns = 0
     var needsReset: Bool = false
     var score = 0
     var turns: Int
@@ -35,27 +36,33 @@ class RocketGameViewModel: ObservableObject {
     var total = 0
     
         func update() {
-            var tempgrid: [rocketLayer] = []
+            var tempgrid: [rocketLayer] = [] // all the rockets in layers
+            var foregrid: [rocketLayer] = [] // the ones in motion get made up separately and tacked on at the end to keep them in front
             for cellnum in 0..<game.RocketGrid.count{
                 let cell = game.RocketGrid[cellnum]
                 if cell.isEmpty {
                     tempgrid.append(rocketLayer(rocket: RocketView(invisible: true), gridPosition: cellnum, gridSize: realGridSize))
                 } else {
                 for rocket in cell {
-                    tempgrid.append(rocketLayer(rocket: RocketView(Rocket: rocket), gridPosition: cellnum, gridSize: realGridSize))
+                    let layer = rocketLayer(rocket: RocketView(Rocket: rocket), gridPosition: cellnum, gridSize: realGridSize)
+                    if game.rocketsInMotion.contains(rocket.id) {
+                        foregrid.append(layer)
+                    } else {
+                    tempgrid.append(layer)
+                    }
+                    }
                 }
             }
-            }
+            tempgrid.append(contentsOf: foregrid)
             rocketLayers = tempgrid
-            
             controller()
-//            staus()
         }
     
     private let rocketSpeedConstant = 0.3
  
 
     init(gridSize: Int, numberOfTurns: Int = 10, numberOfColours: Int) {
+        self.startturns = numberOfTurns
     self.turns = numberOfTurns
     self.numberOfColours = numberOfColours
     self.gameGridSize = gridSize
@@ -83,7 +90,6 @@ func start(rocketID: Int) {
     }
 
     func controller() {
-//        print(animationCount)
         if game.inProgress {
             DispatchQueue.main.asyncAfter(deadline: .now() + rocketSpeedConstant) {
                 withAnimation(.linear(duration: self.rocketSpeedConstant)){
@@ -122,6 +128,14 @@ func reset() {
     update()
 //    animationCount = 0
 }
+    
+    func newGame() {
+        self.game = RocketModel(gridSize: self.gameGridSize, numberOfColours: self.numberOfColours)
+        reset()
+        turns = startturns
+        over = false
+        print(game)
+    }
     
 
 } // End of GameView

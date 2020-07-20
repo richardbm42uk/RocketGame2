@@ -98,10 +98,10 @@ struct RocketGameView: View {
             
             
             if self.game.over {
-                GameOver()
+                GameOver(game: self.game)
             }
         }.edgesIgnoringSafeArea(.bottom)
-    }
+    }.navigationBarTitle("Rocket Game", displayMode: .inline)
 }
 }
 
