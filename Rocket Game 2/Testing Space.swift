@@ -10,20 +10,23 @@ import SwiftUI
 import Combine
 
 struct Testing_Space: View {
-    @State private var showSettings = false
-    var game = RocketGameViewModel(gridSize: 6, numberOfColours: 4)
+//    @State private var showSettings = false
+    private var gameView = RocketGameView(game: RocketGameViewModel(gridSize: 8, numberOfColours: 4))
     
     var body: some View {
         NavigationView() {
             VStack {
                 logoView()
                 Spacer()
-                NavigationLink(destination: RocketGameView(game: game)){
-                    Text("Start").font(.largeTitle)
+                NavigationLink(destination: gameView){
+                    Text("Play").font(.largeTitle)
                 }
-                NavigationLink(destination: RocketGameView(game: game)){
-                    Text("Resume").font(.largeTitle)
-                }
+//                Button(action:{self.startNewGame()}) {
+//                    Text("Reset").font(.largeTitle)
+//                    }
+                Button(action:{print(self.gameView.game)}) {
+                    Text("What?").font(.largeTitle)
+                    }
                 Spacer()
             }
             .navigationBarTitle("Rocket Game", displayMode: .large)
@@ -35,7 +38,13 @@ struct Testing_Space: View {
                 }
             )
         }.accentColor(.red)
+    } // end of body
+    mutating func startNewGame() {
+        self.gameView.reset()
     }
+//        init(){
+//            game = RocketGameViewModel(gridSize: 6, numberOfColours: 4)
+//        }
 }
 
 struct Testing_Space_Previews: PreviewProvider {
@@ -83,6 +92,7 @@ struct SettingsView: View {
             
         }.navigationBarTitle("Settings", displayMode: .inline)
     }
+
 }
 
 

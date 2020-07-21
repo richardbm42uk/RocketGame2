@@ -24,13 +24,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let game = RocketGameViewModel(gridSize: 7, numberOfColours: 4)
         
         // Create the SwiftUI view that provides the window contents.
- //       let game = RocketGameViewModel(gridSize: 6, numberOfColours: 4)
-//        let contentView = RocketGameView(game: game)
+        let game = RocketGameViewModel(gridSize: 8, numberOfColours: 5)
+        let contentView = RocketGameView(game: game)
 
 
         
         // This is what is fucking everything up
-   let contentView = Testing_Space()
+//   let contentView = Testing_Space()
         
         
         // Use a UIHostingController as window root view controller.

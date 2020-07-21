@@ -63,7 +63,7 @@ struct RocketModel {
             unusableSpaceList.append((gridSize+2)*anumber) // mark the left edge as unusable
             unusableSpaceList.append(((gridSize+2)*(anumber+1))-1) // mark the right edge as unusable
         }
-        //unusableSpaceList.sort()
+        unusableSpaceList.sort()
     }
     
     mutating func createGrid() -> Void {
@@ -111,7 +111,7 @@ struct RocketModel {
     
     mutating func scoring() -> Void {
            gameScore = gameScore+(rocketsDestroyedThisRound.count*rocketsDestroyedThisRound.count*gameScoreMultiplier)
-        print(gameScore)
+//        print(gameScore)
        }
        
        mutating func resetGame() -> Void {

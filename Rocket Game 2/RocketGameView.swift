@@ -34,7 +34,6 @@ struct RocketGameView: View {
                                 rocket
                                     .onTapGesture {
                                         if !self.game.inProgress {
-//                                            self.animate = true
                                             self.game.start(rocketID: rocket.id)
                                         }
                                 }
@@ -69,7 +68,6 @@ struct RocketGameView: View {
                                     rocket
                                         .onTapGesture {
                                             if !self.game.inProgress {
-//                                                self.animate = true
                                                 self.game.start(rocketID: rocket.id)
                                             }
                                     }
@@ -103,6 +101,11 @@ struct RocketGameView: View {
         }.edgesIgnoringSafeArea(.bottom)
     }.navigationBarTitle("Rocket Game", displayMode: .inline)
 }
+
+    mutating func reset() {
+        game = RocketGameViewModel(gridSize: 6, numberOfColours: 5)
+    }
+    
 }
 
 
