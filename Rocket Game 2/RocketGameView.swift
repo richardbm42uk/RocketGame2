@@ -111,6 +111,7 @@ struct RocketGameView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         RocketGameView(game: RocketGameViewModel(gridSize: 3, numberOfColours: 3))
+            .previewDevice("iPhone 11")
         
     }
 }

@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+
+
 struct GameOver: View {
     var game: RocketGameViewModel
     var body: some View {
@@ -17,9 +19,10 @@ struct GameOver: View {
                 .foregroundColor(.white)
                 .opacity(0.9)
                 .transition(.scale)
-            VStack {
-                RocketView(id: 0, colourNumber: 0, direction: 0)
-                    .transition(.move(edge: .bottom))
+            VStack(alignment: .center) {
+                RocketView(id: 0, colourNumber: 0, direction: 7)
+                    .aspectRatio(1.0, contentMode: .fit)
+                    .padding()
                 VStack {
                     Spacer()
                     Text("Game Over")
