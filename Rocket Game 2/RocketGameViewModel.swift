@@ -47,7 +47,7 @@ class RocketGameViewModel: ObservableObject, CustomStringConvertible {
         for cellnum in 0..<game.RocketGrid.count{
             let cell = game.RocketGrid[cellnum]
             if cell.isEmpty {
-//                tempgrid.append(rocketLayer(rocket: RocketView(invisible: true), gridPosition: cellnum, gridSize: realGridSize))
+                tempgrid.append(rocketLayer(rocket: RocketView(invisible: true), gridPosition: cellnum, gridSize: realGridSize))
             } else {
                 for rocket in cell {
                     let layer = rocketLayer(rocket: RocketView(Rocket: rocket), gridPosition: cellnum, gridSize: realGridSize)

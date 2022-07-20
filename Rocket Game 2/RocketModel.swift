@@ -227,7 +227,7 @@ struct RocketStruct: Identifiable, Equatable, Hashable, CustomStringConvertible 
         self.direction = direction
     }
     private let directions = ["⬆️","↗️","➡️","↘️","⬇️","↙️","⬅️","↖️"]
-    private let colourList = ["🔴","🔵","🟡","🟢","🟠","🟣","🟤","⚫️"]
+    private let colourList = ["🔴","🔵","🟡","🟢","🟣","🟠","🟤","⚫️"]
     var description: String {
         
         
