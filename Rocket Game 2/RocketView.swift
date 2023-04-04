@@ -51,7 +51,7 @@ struct RocketView: View, Identifiable, CustomStringConvertible {
         self.direction = Rocket.direction
     }
     
-    private var colourpallette = [UIColor.systemRed, UIColor.systemBlue, UIColor.systemYellow, UIColor.systemGreen, UIColor.systemPink, UIColor.systemTeal, UIColor.systemOrange, UIColor.systemGray]
+    private var colourpallette = [UIColor.systemRed, UIColor.systemBlue, UIColor.systemYellow, UIColor.systemGreen, UIColor.systemOrange, UIColor.systemTeal, UIColor.systemPurple, UIColor.systemGray]
     private let directions = ["⬆️","↗️","➡️","↘️","⬇️","↙️","⬅️","↖️"]
     private let colourList = ["🔴","🔵","🟡","🟢","🟠","🟣","🟤","⚫️"]
     internal var description: String {

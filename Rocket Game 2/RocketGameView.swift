@@ -74,6 +74,7 @@ struct RocketGameView: View {
                                 }
                             }
                             .scaleEffect(self.scaleFactor)
+                            .scaledToFit()
                             .clipped()
                         }.aspectRatio(1.0, contentMode: .fit)
                         Group {
@@ -110,7 +111,7 @@ struct RocketGameView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        RocketGameView(game: RocketGameViewModel(gridSize: 3, numberOfColours: 3))
+        RocketGameView(game: RocketGameViewModel(gridSize: 5, numberOfColours: 6))
             .previewDevice("iPhone 11")
         
     }
