@@ -224,8 +224,9 @@
 		38D73EB124BA24B300029FE0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = "Richard Brown-Martin";
 				TargetAttributes = {
 					38D73EB824BA24B300029FE0 = {
@@ -476,6 +477,7 @@
 				DEVELOPMENT_TEAM = JUQLX8LS4R;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Rocket Game 2/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -483,9 +485,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.richardbrownmartin.Rocket-Game-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
 		};
@@ -499,6 +503,7 @@
 				DEVELOPMENT_TEAM = JUQLX8LS4R;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Rocket Game 2/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -506,9 +511,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.richardbrownmartin.Rocket-Game-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Release;
 		};
