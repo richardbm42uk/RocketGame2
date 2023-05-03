@@ -64,7 +64,7 @@ class RocketGameViewModel: ObservableObject, CustomStringConvertible {
         controller()
     }
     
-    private let rocketSpeedConstant = 0.3
+    private let rocketSpeedConstant = 0.1
     
     
     init(gridSize: Int, numberOfTurns: Int = 10, numberOfColours: Int) {

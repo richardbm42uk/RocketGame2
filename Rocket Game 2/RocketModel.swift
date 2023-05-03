@@ -27,6 +27,8 @@ struct RocketModel {
         !rocketsInMotion.isEmpty
     }
 
+    var rocketDirection = Int.random(in: 0...7)
+    var rocketColour = 1
     
     var needsReset: Bool = false
     
@@ -79,7 +81,20 @@ struct RocketModel {
                 var thiscell = RocketGrid[cell] // get the array in the cell
                 if thiscell.isEmpty { // and if it's empty
                     rocketID = rocketID + 1 // incrememt the rocket id tracker
-                    thiscell.append(RocketStruct(id: rocketID, colourNumber: Int.random(in: 0..<numberOfColours), direction: Int.random(in: 0...7))) // create a new random rocket in an array
+                    let newRocketDirection = Int.random(in: 0...7) // create a random direction
+                    let newRocketColour = Int.random(in: 0..<numberOfColours) // create a random colour
+                    if rocketColour == newRocketColour { // if the new colour is the same as the last colour
+                        rocketColour = Int.random(in: 0..<numberOfColours) // generate a new colour to minimise the same colour repeating
+                    } else { // otherwise
+                        rocketColour = newRocketColour // use the original random colour
+                    }
+                    if rocketDirection == newRocketDirection {
+                        rocketDirection = Int.random(in: 0...7)
+                    } else {
+                        rocketDirection = newRocketDirection
+                    }
+                        
+                    thiscell.append(RocketStruct(id: rocketID, colourNumber: rocketColour, direction: rocketDirection)) // create a new random rocket in an array
                     RocketGrid[cell] = thiscell // and assign that to the cell in the grid
                 }
             }
@@ -106,7 +121,6 @@ struct RocketModel {
     mutating func start(id: Int) -> Void {
         rocketsDestroyedThisRound = [] //reset the score of rockets set off last round
         rocketsInMotion.append(id) // add the rocket to the list of those that need to be in motion
-        //self.go() // start the round
     }
     
     mutating func scoring() -> Void {

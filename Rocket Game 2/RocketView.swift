@@ -92,7 +92,7 @@ struct RocketView: View, Identifiable, CustomStringConvertible {
 
 struct RocketView_Previews: PreviewProvider {
     static var previews: some View {
-        RocketView(id: 0, colourNumber: 7, direction: 1)
+        RocketView(id: 0, colourNumber: 0, direction: 1)
     }
 }
 

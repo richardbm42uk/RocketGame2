@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,7 +20,6 @@
 		38D73EEF24BA39F200029FE0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D73EEE24BA39F200029FE0 /* Extensions.swift */; };
 		38D73EF224BB14D600029FE0 /* RocketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D73EF124BB14D600029FE0 /* RocketModel.swift */; };
 		38DB430524BDB87D0064F2AF /* RocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB430424BDB87D0064F2AF /* RocketView.swift */; };
-		38DB430F24C05BE10064F2AF /* rocketLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB430E24C05BE10064F2AF /* rocketLayer.swift */; };
 		38DB431124C083780064F2AF /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB431024C083780064F2AF /* Array+Identifiable.swift */; };
 		38DB431324C08EA00064F2AF /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB431224C08EA00064F2AF /* GameOver.swift */; };
 /* End PBXBuildFile section */
@@ -63,7 +62,6 @@
 		38D73EF024BAFC7F00029FE0 /* Rocket Game 2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Rocket Game 2.entitlements"; sourceTree = "<group>"; };
 		38D73EF124BB14D600029FE0 /* RocketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketModel.swift; sourceTree = "<group>"; };
 		38DB430424BDB87D0064F2AF /* RocketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketView.swift; sourceTree = "<group>"; };
-		38DB430E24C05BE10064F2AF /* rocketLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rocketLayer.swift; sourceTree = "<group>"; };
 		38DB431024C083780064F2AF /* Array+Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
 		38DB431224C08EA00064F2AF /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,7 +123,6 @@
 				38DB430424BDB87D0064F2AF /* RocketView.swift */,
 				38DB431224C08EA00064F2AF /* GameOver.swift */,
 				3870B47424C0B7F40085B551 /* Testing Space.swift */,
-				38DB430E24C05BE10064F2AF /* rocketLayer.swift */,
 				38DB431024C083780064F2AF /* Array+Identifiable.swift */,
 				38D73EEE24BA39F200029FE0 /* Extensions.swift */,
 				38D73EC224BA24BE00029FE0 /* Assets.xcassets */,
@@ -243,7 +240,7 @@
 				};
 			};
 			buildConfigurationList = 38D73EB424BA24B300029FE0 /* Build configuration list for PBXProject "Rocket Game 2" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -302,7 +299,6 @@
 				38DB431124C083780064F2AF /* Array+Identifiable.swift in Sources */,
 				3870B47524C0B7F40085B551 /* Testing Space.swift in Sources */,
 				38D73EED24BA396E00029FE0 /* RocketGameViewModel.swift in Sources */,
-				38DB430F24C05BE10064F2AF /* rocketLayer.swift in Sources */,
 				38D73EC124BA24B300029FE0 /* RocketGameView.swift in Sources */,
 				38DB431324C08EA00064F2AF /* GameOver.swift in Sources */,
 			);
