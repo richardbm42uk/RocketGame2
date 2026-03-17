@@ -470,7 +470,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Rocket Game 2/Rocket Game 2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Rocket Game 2/Preview Content\"";
-				DEVELOPMENT_TEAM = JUQLX8LS4R;
+				DEVELOPMENT_TEAM = 2HGS22S5FL;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Rocket Game 2/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
@@ -496,7 +496,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Rocket Game 2/Rocket Game 2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Rocket Game 2/Preview Content\"";
-				DEVELOPMENT_TEAM = JUQLX8LS4R;
+				DEVELOPMENT_TEAM = 2HGS22S5FL;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Rocket Game 2/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";

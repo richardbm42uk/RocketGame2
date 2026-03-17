@@ -8,29 +8,29 @@
 
 import SwiftUI
 
-
-
 struct GameOver: View {
-    var game: RocketGameViewModel
+    @ObservedObject var game: RocketGameViewModel
+
     var body: some View {
-        
-        ZStack{
+        ZStack {
             RoundedRectangle(cornerRadius: 10.0)
                 .foregroundColor(.white)
                 .opacity(0.9)
                 .transition(.scale)
+
             VStack(alignment: .center) {
                 RocketView(id: 0, colourNumber: 0, direction: 7)
                     .aspectRatio(1.0, contentMode: .fit)
                     .padding()
+
                 VStack {
                     Spacer()
                     Text("Game Over")
                         .font(.largeTitle)
                     Spacer()
-                    Text("Score: 100")
+                    Text("Score: \(game.score)")
                         .font(.title)
-                    Text("Total Destroyed: 5")
+                    Text("Total Destroyed: \(game.total)")
                         .font(.title)
                     Spacer()
                     Button(action: {
@@ -40,8 +40,10 @@ struct GameOver: View {
                     }
                     Spacer()
                 }
-            }.padding()
-        }.padding()
+            }
+            .padding()
+        }
+        .padding()
     }
 }
 
